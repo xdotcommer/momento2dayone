@@ -32,12 +32,6 @@ ARGF.each_line do |line|
     @current_day.entries << @current_entry
     @current_entry.process_time_line line
 
-  # Day One doesn't have tags :(
-  #
-  # elsif line =~ /^Tags: (.*)\r\n$/
-  # 
-  #   @current_entry.tags = $1
-  # 
   elsif @current_entry
     @current_entry.lines << line
   end
@@ -48,5 +42,3 @@ end
     system "echo \"#{entry.lines.join}\" | dayone -d=\"#{day.date.to_s} #{entry.time}\" new"
   end
 end
-
-# puts @days.inspect
